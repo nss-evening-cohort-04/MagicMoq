@@ -9,6 +9,11 @@ namespace MagicMoq.Tests.DAL
     [TestClass]
     public class QuestionsTests
     {
+        [TestInitialize]
+        public void testInit()
+        {
+
+        }
         [TestMethod]
         public void EnsureICanCreateQuestionsInstance()
         {
@@ -199,7 +204,7 @@ namespace MagicMoq.Tests.DAL
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
             // Write this test
-            Mock<Answers> mock_answers = new Mock<Answers>;
+            Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { });
         }
 
