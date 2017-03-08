@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MagicMoq.DAL;
 using Moq;
+using System.Collections.Generic;
 
 namespace MagicMoq.Tests.DAL
 {
@@ -11,13 +12,17 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureICanCreateQuestionsInstance()
         {
-            // Write this test
+            Questions questions = new Questions();
+
+            Assert.IsNotNull(questions);
         }
 
         [TestMethod]
         public void EnsureICanCreateAnswersInstance()
         {
-            // Write this test
+            Answers answers = new Answers();
+
+            Assert.IsNotNull(answers);
         }
 
         [TestMethod]
@@ -34,9 +39,11 @@ namespace MagicMoq.Tests.DAL
         {
 
             // Hint 1: Create an instance of your Answers class
+            Answers answer = new Answers();
+
 
             // Hint 2: Implement another Constructor (for Questions class)
-            Questions questions = new Questions(/* Hint 3: inject an Answers instance here*/);
+            Questions questions = new Questions(answer);
 
             Assert.IsNotNull(questions.Wand);
         }
@@ -45,11 +52,12 @@ namespace MagicMoq.Tests.DAL
         public void EnsureSayHelloReturnsHelloWorld()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
+            Mock<Answers> mock_answers = new Mock<Answers>(); // creation of the Mock
+            mock_answers.Setup(a => a.HelloWorld()).Returns("Hello World"); // how to hijack the method call
             
             // Add code that mocks the "HelloWorld" method response
 
-            Questions questions = new Questions(mock_answers.Object);
+            Questions questions = new Questions(mock_answers.Object); // injection of the mock object
 
             // Act
             string expected_result = "Hello World";
@@ -64,6 +72,7 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Zero()).Returns(0);
 
             // Add code that mocks the "Zero" method response
 
@@ -75,6 +84,7 @@ namespace MagicMoq.Tests.DAL
 
             // Assert
             Assert.AreEqual(expected_result, actual_result);
+            mock_answers.Verify(a => a.Zero());
         }
 
         [TestMethod]
@@ -82,6 +92,7 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.One()).Returns(1);
 
             // Add code that mocks the "Two" method response
 
@@ -182,7 +193,8 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { });
         }
 
         [TestMethod]
