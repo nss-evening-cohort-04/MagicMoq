@@ -34,17 +34,20 @@ namespace MagicMoq.DAL
 
         public int ZeroPlusZero()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return Wand.Zero() + Wand.Zero();
         }
 
         public int FourPlusZero()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return Wand.Four() + Wand.Zero();
         }
 
         public int TwoMinusZero()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return Wand.Two() - Wand.Zero();
         }
 
         public int OnePlusTwo()
