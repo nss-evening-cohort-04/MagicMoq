@@ -69,10 +69,10 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            // Add code that mocks the "Zero" method response
-            mock_answers.Setup(a => a.Zero()).Returns(0);
-
             Questions questions = new Questions(mock_answers.Object);
+            // Add code that mocks the "Zero" method response
+            mock_answers.Setup(a => a.One()).Returns(0);
+
 
             // Act
             int expected_result = 0;
