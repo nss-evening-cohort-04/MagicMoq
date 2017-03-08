@@ -25,7 +25,7 @@ namespace MagicMoq.DAL
 
         public List<int> CountToFive()
         {
-            throw new NotImplementedException();
+            return Wand.ListOfNInts(5);
         }
 
         public List<int> FirstThreeEvenInts()
@@ -40,22 +40,22 @@ namespace MagicMoq.DAL
 
         public int FourMinusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Four() - Wand.Two();
         }
 
         public int FourMinusTwoPlusOne()
         {
-            throw new NotImplementedException();
+            return (Wand.Four() - Wand.Two()) + Wand.One();
         }
 
         public int FourPlusZero()
         {
-            throw new NotImplementedException();
+            return Wand.Four() + Wand.Zero();
         }
 
         public int OneMinusOne()
         {
-            return Wand.Zero();
+            return Wand.One() - Wand.One();
         }
 
         public int OnePlusOne()
@@ -65,17 +65,17 @@ namespace MagicMoq.DAL
 
         public int OnePlusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.One() + Wand.Two();
         }
 
         public bool ReturnFalse()
         {
-            throw new NotImplementedException();
+            return Wand.False();
         }
 
         public bool ReturnTrue()
         {
-            throw new NotImplementedException();
+            return Wand.True();
         }
 
         public string SayHelloWorld()
@@ -85,22 +85,22 @@ namespace MagicMoq.DAL
 
         public string SayNothing()
         {
-            throw new NotImplementedException();
+            return Wand.EmptyString();
         }
 
         public int TwoMinusZero()
         {
-            throw new NotImplementedException();
+            return Wand.Two() - Wand.Zero();
         }
 
         public int TwoPlusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Two() + Wand.Two();
         }
 
         public int ZeroPlusZero()
         {
-            throw new NotImplementedException();
+            return Wand.Zero() + Wand.Zero();
         }
     }
 }
