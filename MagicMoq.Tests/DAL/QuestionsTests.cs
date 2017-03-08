@@ -20,7 +20,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureICanCreateAnswersInstance()
         {
-            // Write this test
             Answers answers = new Answers();
             Assert.IsNotNull(answers);
         }
@@ -52,8 +51,8 @@ namespace MagicMoq.Tests.DAL
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
 
-            mock_answers.Setup(a => a.HelloWorld()).Returns("Hello World");
             // Add code that mocks the "HelloWorld" method response
+            mock_answers.Setup(a => a.HelloWorld()).Returns("Hello World");
 
             Questions questions = new Questions(mock_answers.Object);
 
