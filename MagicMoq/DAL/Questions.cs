@@ -30,12 +30,12 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
-            throw new NotImplementedException();
+            return new List<int> { Wand.Zero(), Wand.Two(), Wand.Four() };
         }
 
         public List<int> FirstThreeOddInts()
         {
-            throw new NotImplementedException();
+            return new List<int> { Wand.One(), Wand.Three(), (Wand.Two() + Wand.Three()) };
         }
 
         public int FourMinusTwo()

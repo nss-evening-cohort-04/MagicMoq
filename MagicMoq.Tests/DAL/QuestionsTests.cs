@@ -128,6 +128,7 @@ namespace MagicMoq.Tests.DAL
 
             Questions questions = new Questions(mock_answers.Object);
 
+            mock_answers.Setup(a => a.True()).Returns(true);
             // Act
             bool expected_result = true;
             bool actual_result = questions.ReturnTrue();
@@ -160,6 +161,8 @@ namespace MagicMoq.Tests.DAL
             
             // Add code that mocks the "EmptyString" method response
             Questions questions = new Questions(mock_answers.Object);
+
+            mock_answers.Setup(a => a.EmptyString()).Returns("");
 
             // Act
             string expected_result = "";
@@ -240,10 +243,12 @@ namespace MagicMoq.Tests.DAL
             Mock<Answers> mock_answer = new Mock<Answers>();
             Questions questions = new Questions(mock_answer.Object);
 
-            mock_answer.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 0, 2, 4 });
+            mock_answer.Setup(a => a.Zero()).Returns(0);
+            mock_answer.Setup(a => a.Two()).Returns(2);
+            mock_answer.Setup(a => a.Four()).Returns(4);
 
             List<int> expectedResult = new List<int> { 0, 2, 4 };
-            List<int> actualResult = questions.CountToFive();
+            List<int> actualResult = questions.FirstThreeEvenInts();
 
             CollectionAssert.AreEqual(expectedResult, actualResult);
         }
@@ -251,7 +256,17 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
-            // Write this test
+            Mock<Answers> mock_answer = new Mock<Answers>();
+            Questions questions = new Questions(mock_answer.Object);
+
+            mock_answer.Setup(a => a.One()).Returns(1);
+            mock_answer.Setup(a => a.Two()).Returns(2);
+            mock_answer.Setup(a => a.Three()).Returns(3);
+
+            List<int> expectedResult = new List<int> { 1, 3, 5 };
+            List<int> actualResult = questions.FirstThreeOddInts();
+
+            CollectionAssert.AreEqual(expectedResult, actualResult);
         }
 
         [TestMethod]
