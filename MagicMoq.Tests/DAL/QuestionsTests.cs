@@ -104,17 +104,19 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureOnePlusTwoReturnsThree()
         {
-            // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            // Add code that mocks the "Three" method response
             Questions questions = new Questions(mock_answers.Object);
 
-            // Act
-            int expected_result = 3;
-            int actual_result = questions.OnePlusTwo();
+            mock_answers.Setup(a => a.One()).Returns(1);
+            mock_answers.Setup(a => a.Two()).Returns(2);
 
-            // Assert
-            Assert.AreEqual(expected_result, actual_result);
+            int expectedResult = 3;
+            int actualResult = questions.OnePlusTwo();
+
+            Assert.AreEqual(expectedResult, actualResult);
+            // Ensures the proper tests were run
+            mock_answers.Verify(a => a.One());
+            mock_answers.Verify(a => a.Two());
         }
 
         [TestMethod]
