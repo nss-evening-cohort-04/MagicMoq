@@ -172,7 +172,16 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureTwoPlusTwoReturnsFour()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            Questions questions = new Questions(mock_answers.Object);
+
+            mock_answers.Setup(a => a.Two()).Returns(2);
+
+            int expectedResult = 4;
+            int actualResult = questions.TwoPlusTwo();
+
+            Assert.AreEqual(expectedResult, actualResult);
+            mock_answers.Verify(a => a.Two());
         }
 
         [TestMethod]
