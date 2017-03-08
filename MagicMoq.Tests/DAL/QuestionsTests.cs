@@ -110,6 +110,8 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Three()).Returns(3);
+
             // Add code that mocks the "Three" method response
             Questions questions = new Questions(mock_answers.Object);
 
@@ -128,6 +130,8 @@ namespace MagicMoq.Tests.DAL
             Mock<Answers> mock_answers = new Mock<Answers>();
             // Add code that mocks the "True" method response
 
+            mock_answers.Setup(a => a.True()).Returns(true);
+
             Questions questions = new Questions(mock_answers.Object);
 
             // Act
@@ -143,7 +147,10 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
+
             // Add code that mocks the "False" method response
+            mock_answers.Setup(a => a.False()).Returns(false);
+
             Questions questions = new Questions(mock_answers.Object);
 
             // Act
@@ -159,8 +166,10 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            
+
             // Add code that mocks the "EmptyString" method response
+            mock_answers.Setup(a => a.EmptyString()).Returns("");
+
             Questions questions = new Questions(mock_answers.Object);
 
             // Act
@@ -175,18 +184,45 @@ namespace MagicMoq.Tests.DAL
         public void EnsureTwoPlusTwoReturnsFour()
         {
             // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+
+            mock_answers.Setup(a => a.Four()).Returns(4);
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            int expected_result = 4;
+            int actual_result = questions.TwoPlusTwo();
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFourMinusTwoPlusOneReturnsThree()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Three()).Returns(3);
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            int expected_response = 3;
+            int actual_response = questions.FourMinusTwoPlusOne();
+
+            Assert.AreEqual(expected_response, actual_response);
         }
 
         [TestMethod]
         public void EnsureFourMinusTwoReturnsTwo()
         {
             // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Two()).Returns(2);
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            int expected_response = 2;
+            int actual_response = questions.FourMinusTwo();
+
+            Assert.AreEqual(expected_response, actual_response);
         }
 
         [TestMethod]
@@ -212,18 +248,44 @@ namespace MagicMoq.Tests.DAL
         public void EnsureZeroPlusZeroReturnsZero()
         {
             // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Zero()).Returns(0);
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            int expected_result = 0;
+            int actual_result = questions.ZeroPlusZero();
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFourPlusZeroReturnsFour()
         {
             // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Four()).Returns(4);
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            int expected_result = 4;
+            int actual_result = questions.FourPlusZero();
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureTwoMinusZeroReturnsTwo()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Two()).Returns(2);
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            int expected_result = 2;
+            int actual_result = questions.TwoMinusZero();
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
     }
