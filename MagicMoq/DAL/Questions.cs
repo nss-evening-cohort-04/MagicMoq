@@ -39,17 +39,17 @@ namespace MagicMoq.DAL
 
         public int FourMinusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Two();
         }
 
         public int FourMinusTwoPlusOne()
         {
-            throw new NotImplementedException();
+            return Wand.Three();
         }
 
         public int FourPlusZero()
         {
-            throw new NotImplementedException();
+            return Wand.Four();
         }
 
         public int OneMinusOne()
@@ -68,17 +68,17 @@ namespace MagicMoq.DAL
 
         public int OnePlusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Three();
         }
 
         public bool ReturnFalse()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool ReturnTrue()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public string SayHelloWorld()
@@ -88,22 +88,22 @@ namespace MagicMoq.DAL
 
         public string SayNothing()
         {
-            throw new NotImplementedException();
+            return Wand.EmptyString();
         }
 
         public int TwoMinusZero()
         {
-            throw new NotImplementedException();
+            return Wand.Two();
         }
 
         public int TwoPlusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Four();
         }
 
         public int ZeroPlusZero()
         {
-            throw new NotImplementedException();
+            return Wand.Zero();
         }
     }
 }
