@@ -269,17 +269,15 @@ namespace MagicMoq.Tests.DAL
             Mock<Answers> mockAnswer = new Mock<Answers>();
             Questions questions = new Questions(mockAnswer.Object);
 
-            mockAnswer.Setup(a => a.Zero()).Returns(0);
             mockAnswer.Setup(a => a.Two()).Returns(2);
             mockAnswer.Setup(a => a.Four()).Returns(4);
 
-            List<int> expectedResult = new List<int> { 0, 2, 4 };
+            List<int> expectedResult = new List<int> { 2, 4, 6 };
             List<int> actualResult = questions.FirstThreeEvenInts();
 
             CollectionAssert.AreEqual(expectedResult, actualResult);
 
             // Methods used in this test
-            mockAnswer.Verify(a => a.Zero());
             mockAnswer.Verify(a => a.Two());
             mockAnswer.Verify(a => a.Four());
         }

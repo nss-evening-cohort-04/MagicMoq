@@ -30,7 +30,7 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
-            return new List<int> { Wand.Zero(), Wand.Two(), Wand.Four() };
+            return new List<int> { Wand.Two(), Wand.Four(), (Wand.Four() + Wand.Two()) };
         }
 
         public List<int> FirstThreeOddInts()
