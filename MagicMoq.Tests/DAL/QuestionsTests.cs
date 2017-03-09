@@ -252,12 +252,22 @@ namespace MagicMoq.Tests.DAL
             List<int> actual_response = questions.FirstThreeEvenInts();
 
             CollectionAssert.AreEqual(expected_response, actual_response);
+            mock_answers.Verify(a => a.ListOfNInts(It.IsAny<int>()));
         }
 
         [TestMethod]
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            List<int> expected_response = new List<int> { 1, 3, 5 };
+            List<int> actual_response = questions.FirstThreeOddInts();
+
+            CollectionAssert.AreEqual(expected_response, actual_response);
+            mock_answers.Verify(a => a.ListOfNInts(It.IsAny<int>()));
         }
 
         [TestMethod]
