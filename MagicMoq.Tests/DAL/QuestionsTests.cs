@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MagicMoq.DAL;
 using Moq;
+using System.Collections.Generic;
 
 namespace MagicMoq.Tests.DAL
 {
@@ -209,19 +210,50 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(5)).Returns(new List<int> { 1, 2, 3, 4, 5 });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+            List<int> expected_result = new List<int> { 1, 2, 3, 4, 5 };
+            List<int> actual_result = questions.CountToFive();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
+
         }
 
         [TestMethod]
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(3)).Returns(new List<int> { 1, 2, 3, 4, 5, 6, });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+            List<int> expected_result = new List<int> { 1, 2, 3, 4, 5, 6 };
+            List<int> actual_result = questions.FirstThreeEvenInts();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(3)).Returns(new List<int> { 1, 2, 3, 4, 5, 6, });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+            List<int> expected_result = new List<int> { 1, 2, 3, 4, 5, 6 };
+            List<int> actual_result = questions.FirstThreeOddInts();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
