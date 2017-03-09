@@ -179,40 +179,102 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureTwoPlusTwoReturnsFour()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Four()).Returns(4);
+
+            // Add code that mocks the "Three" method response
+            Questions questions = new Questions(mock_answers.Object);
+
+            // Act
+            int expected_result = 4;
+            int actual_result = questions.TwoPlusTwo();
+
+            // Assert
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFourMinusTwoPlusOneReturnsThree()
         {
-            // Write this test
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Three()).Returns(3);
+
+            // Add code that mocks the "Three" method response
+            Questions questions = new Questions(mock_answers.Object);
+
+            // Act
+            int expected_result = 3;
+            int actual_result = questions.FourMinusTwoPlusOne();
+
+            // Assert
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFourMinusTwoReturnsTwo()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Two()).Returns(2);
+
+            // Add code that mocks the "Two" method response
+
+            Questions questions = new Questions(mock_answers.Object);
+
+            // Act
+            int expected_result = 2;
+            int actual_result = questions.FourMinusTwo();
+
+            // Assert
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
+            //Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> {1, 2, 3, 4, 5 });
+            mock_answers.Setup(a => a.ListOfNInts(5)).Returns(new List<int> {1, 2, 3, 4, 5 });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+             List<int> expected_result = new List<int> {1, 2, 3, 4, 5 };
+             List<int> actual_result = questions.CountToFive();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
+            //Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 2, 4, 6 });
+            mock_answers.Setup(a => a.ListOfNInts(3)).Returns(new List<int> { 2, 4, 6 });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+            List<int> expected_result = new List<int> { 2, 4, 6 };
+            List<int> actual_result = questions.FirstThreeEvenInts();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
+            //Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 3, 5 });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+            List<int> expected_result = new List<int> { 1, 3, 5 };
+            List<int> actual_result = questions.FirstThreeOddInts();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
