@@ -29,7 +29,7 @@ namespace MagicMoq.DAL
         {
             throw new NotImplementedException();
         }
-
+        
         virtual public List<int> ListOfNInts(int n)
         {
             throw new NotImplementedException();
