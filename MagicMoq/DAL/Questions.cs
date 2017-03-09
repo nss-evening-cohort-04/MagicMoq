@@ -99,12 +99,12 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
-            return Wand.ListOfNInts(5);
+            return Wand.ListOfNInts(3);
         }
 
         public List<int> FirstThreeOddInts()
         {
-            return Wand.ListOfNInts(5);
+            return Wand.ListOfNInts(3);
         }
     }
 }
