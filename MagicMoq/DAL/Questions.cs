@@ -24,17 +24,17 @@ namespace MagicMoq.DAL
 
         public List<int> CountToFive()
         {
-            throw new NotImplementedException();
+            return Wand.ListOfNInts(5);
         }
 
         public List<int> FirstThreeEvenInts()
         {
-            throw new NotImplementedException();
+            return Wand.ListOfNInts(3);
         }
 
         public List<int> FirstThreeOddInts()
         {
-            throw new NotImplementedException();
+            return Wand.ListOfNInts(3);
         }
 
         public int FourMinusTwo()

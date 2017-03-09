@@ -224,28 +224,50 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
+            //Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { });
+            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 0, 1, 2, 3, 4 });
+            Questions questions = new Questions(mock_answers.Object);
+
+            //Act
+            List<int> expected_result = new List<int> { 0, 1, 2, 3, 4, };
+            List<int> actual_result = questions.CountToFive();
+
+            //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
+
         }
 
         [TestMethod]
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
             //Arrange
-            
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 2, 4, 6 });
+            Questions questions = new Questions(mock_answers.Object);
+
             //Act
+            List<int> expected_result = new List<int> { 2, 4, 6 };
+            List<int> actual_result = questions.FirstThreeEvenInts();
 
             //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
             //Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 3, 5 });
+            Questions questions = new Questions(mock_answers.Object);
 
             //Act
+            List<int> expected_result = new List<int> { 1, 3, 5 };
+            List<int> actual_result = questions.FirstThreeOddInts();
 
             //Assert
+            CollectionAssert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
