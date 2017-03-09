@@ -34,7 +34,7 @@ namespace MagicMoq.DAL
 
             foreach(var integer in oneThroughTen)
             {
-                if (integer % 2 == 0 && firstThreeEvenInts.Count <= 3)
+                if (integer % 2 == 0 && firstThreeEvenInts.Count < 3)
                 {
                     firstThreeEvenInts.Add(integer);
                 }
@@ -44,7 +44,17 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeOddInts()
         {
-            throw new NotImplementedException();
+            List<int> oneThroughTen = Wand.ListOfNInts(10);
+            List<int> threeOddInts = new List<int>();
+
+            foreach(var number in oneThroughTen)
+            {
+                if (number % 2 == 1 && threeOddInts.Count < 3)
+                {
+                    threeOddInts.Add(number);
+                }
+            }
+            return threeOddInts;
         }
 
         public int FourMinusTwo()
