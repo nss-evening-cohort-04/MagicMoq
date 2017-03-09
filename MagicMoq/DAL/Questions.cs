@@ -60,7 +60,6 @@ namespace MagicMoq.DAL
         {
             //throw new NotImplementedException();
             return Wand.Two() + Wand.Two();
-            //return Wand.One() + Wand.One();
         }
 
         public int OneMinusOne()
@@ -82,7 +81,8 @@ namespace MagicMoq.DAL
 
         public int FourMinusTwoPlusOne()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return Wand.Three();
         }
 
         public string SayNothing()

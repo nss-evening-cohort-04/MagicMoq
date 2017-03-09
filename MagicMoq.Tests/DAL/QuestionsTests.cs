@@ -177,7 +177,17 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureFourMinusTwoPlusOneReturnsThree()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Three()).Returns(3);
+            Questions questions = new Questions(mock_answers.Object);
+
+            // Act
+            int expected_result = 3;
+            int actual_result = questions.FourMinusTwoPlusOne();
+
+            // Assert
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
@@ -261,7 +271,7 @@ namespace MagicMoq.Tests.DAL
             // Assert
             Assert.AreEqual(expected_result, actual_result);
         }
-    }
+    
 
     }
 }
