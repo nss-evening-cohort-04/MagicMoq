@@ -48,12 +48,17 @@ namespace MagicMoq.DAL
 
         public int OnePlusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Three();
+        }
+
+        public int OnePlusTwoV2()
+        {
+            return Wand.One() + Wand.Two();
         }
 
         public int TwoPlusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Two() + Wand.Two();
         }
 
         public int OneMinusOne()
@@ -68,27 +73,32 @@ namespace MagicMoq.DAL
 
         public int FourMinusTwo()
         {
-            throw new NotImplementedException();
+            return Wand.Two();
         }
 
         public int FourMinusTwoPlusOne()
         {
-            throw new NotImplementedException();
+            return Wand.Four() - Wand.Two() + Wand.One();
         }
 
         public string SayNothing()
         {
-            throw new NotImplementedException();
+            return Wand.EmptyString();
         }
 
         public bool ReturnFalse()
         {
-            throw new NotImplementedException();
+            return Wand.False();
         }
 
         public bool ReturnTrue()
         {
-            throw new NotImplementedException();
+            return Wand.True();
+        }
+
+        public bool ReturnTrueV2()
+        {
+            return !Wand.False();
         }
 
         public string SayHelloWorld()
@@ -98,17 +108,47 @@ namespace MagicMoq.DAL
 
         public List<int> CountToFive()
         {
-            throw new NotImplementedException();
+            return Wand.ListOfNInts(5);
         }
 
         public List<int> FirstThreeEvenInts()
         {
-            throw new NotImplementedException();
+            List<int> numbers = Wand.ListOfNInts(10); // Pre sorted
+            // Use numbers.Sort() if ListOfNInts doesn't return sorted items
+            List<int> result = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (number % 2 == 0)
+                {
+                    result.Add(number);
+                }
+
+                if (result.Count == 3)
+                {
+                    break; // Exit loop
+                }
+            }
+            return result;
         }
 
         public List<int> FirstThreeOddInts()
         {
-            throw new NotImplementedException();
+            List<int> numbers = Wand.ListOfNInts(10); // Pre sorted
+            // Use numbers.Sort() if ListOfNInts doesn't return sorted items
+            List<int> result = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (number % 2 != 0)
+                {
+                    result.Add(number);
+                }
+
+                if (result.Count == 3)
+                {
+                    break; // Exit loop
+                }
+            }
+            return result;
         }
     }
 }
