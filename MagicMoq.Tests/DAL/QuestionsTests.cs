@@ -109,7 +109,9 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.Two()).Returns(3);
+            mock_answers.Setup(a => a.Two()).Returns(2);
+            mock_answers.Setup(a => a.One()).Returns(1);
+
             // Add code that mocks the "Three" method response
             Questions questions = new Questions(mock_answers.Object);
 
@@ -250,7 +252,6 @@ namespace MagicMoq.Tests.DAL
         
             //Assert
             CollectionAssert.AreEqual(expected_result, actual_result);
-            mock_answers.Verify(a => a.ListOfNInts(5));
 
 
         }
@@ -259,7 +260,8 @@ namespace MagicMoq.Tests.DAL
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 2, 4, 6 });
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6))).Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
+           // mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> {1, 2, 3, 4, 5,6 });
 
             Questions questions = new Questions(mock_answers.Object);
 
@@ -269,7 +271,6 @@ namespace MagicMoq.Tests.DAL
 
             //Assert
             CollectionAssert.AreEqual(expected_result, actual_result);
-            mock_answers.Verify(a => a.ListOfNInts(3));
 
         }
 
@@ -277,8 +278,7 @@ namespace MagicMoq.Tests.DAL
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 3, 5 });
-
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 10))).Returns(new List<int> { 1, 2, 3, 4, 5, 6 , 7, 8, 9, 10});
             Questions questions = new Questions(mock_answers.Object);
 
             // Act
@@ -287,7 +287,6 @@ namespace MagicMoq.Tests.DAL
 
             //Assert
             CollectionAssert.AreEqual(expected_result, actual_result);
-            mock_answers.Verify(a => a.ListOfNInts(3));
 
         }
 

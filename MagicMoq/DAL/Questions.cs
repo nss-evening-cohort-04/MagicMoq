@@ -29,14 +29,34 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
-            return Wand.ListOfNInts(3);
-           // return new List<int> { Wand.Two(), Wand.Four(), Wand.Three() + Wand.Three() };
-
+            List<int> numbers = Wand.ListOfNInts(6);
+            List<int> result = new List<int>();
+            foreach (var number in numbers)
+            {
+                if(number % 2 == 0)
+                {
+                    result.Add(number);
+                }
+            }
+            return result;
         }
 
         public List<int> FirstThreeOddInts()
         {
-            return Wand.ListOfNInts(3);
+            List<int> numbers = Wand.ListOfNInts(10);
+            List<int> result = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (number % 2 != 0)
+                {
+                    result.Add(number);
+                }
+                if (result.Count == 3)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         public int FourMinusTwo()
