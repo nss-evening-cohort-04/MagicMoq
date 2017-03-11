@@ -9,6 +9,23 @@ namespace MagicMoq.Tests.DAL
     [TestClass]
     public class QuestionsTests
     {
+        private Mock<Answers> mock_answers { get; set; }
+
+        [TestInitialize]
+        public void Setup() // Name of this method does not matter
+        {
+            // Runs BEFORE every test
+            mock_answers = new Mock<Answers>();
+
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Runs AFTER every test
+            mock_answers = null;    
+        }
+
         [TestMethod]
         public void EnsureICanCreateQuestionsInstance()
         {
@@ -50,7 +67,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureSayHelloReturnsHelloWorld()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>(); // Creates the Mock
             mock_answers.Setup(a => a.HelloWorld()).Returns("Hello World"); // How to hijack the method call
             /* a => a.something()
              * function (a) {
@@ -74,7 +90,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureOneMinusOneReturnsZero()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.Zero()).Returns(0);
             // Add code that mocks the "Zero" method response
 
@@ -95,7 +110,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureOnePlusOneReturnsTwo()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // Works with Option 2
             //mock_answers.Setup(a => a.One()).Returns(1);
 
@@ -117,7 +131,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureOnePlusTwoReturnsThree()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // Add code that mocks the "Three" method response
             mock_answers.Setup(a => a.Three()).Returns(3);
             Questions questions = new Questions(mock_answers.Object);
@@ -134,7 +147,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureOnePlusTwoReturnsOnePlusTwo()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // Add code that mocks the "Three" method response
             mock_answers.Setup(a => a.Two()).Returns(2);
             mock_answers.Setup(a => a.One()).Returns(1);
@@ -152,7 +164,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureThisReturnsTrue()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // Add code that mocks the "True" method response
             mock_answers.Setup(a => a.True()).Returns(true);
             Questions questions = new Questions(mock_answers.Object);
@@ -169,7 +180,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureThisReturnsTrueV2()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // Add code that mocks the "True" method response
             mock_answers.Setup(a => a.False()).Returns(false);
             Questions questions = new Questions(mock_answers.Object);
@@ -186,7 +196,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureThisReturnsFalse()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.False()).Returns(false);
             // Add code that mocks the "False" method response
             Questions questions = new Questions(mock_answers.Object);
@@ -203,7 +212,6 @@ namespace MagicMoq.Tests.DAL
         public void EnsureSayNothingReturnsEmptyString()
         {
             // Arrange
-            Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.EmptyString()).Returns("");
             // Add code that mocks the "EmptyString" method response
             Questions questions = new Questions(mock_answers.Object);
@@ -219,7 +227,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureTwoPlusTwoReturnsFour()
         {
-            Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.Two()).Returns(2);
 
             Questions questions = new Questions(mock_answers.Object);
@@ -233,7 +240,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureFourMinusTwoPlusOneReturnsThree()
         {
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // Order of mocked methods does not matter
             mock_answers.Setup(a => a.Two()).Returns(2);
             mock_answers.Setup(a => a.Four()).Returns(4);
@@ -250,7 +256,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureFourMinusTwoReturnsTwo()
         {
-            Mock<Answers> mock_answers = new Mock<Answers>();
             mock_answers.Setup(a => a.Two()).Returns(2);
 
             Questions questions = new Questions(mock_answers.Object);
@@ -264,7 +269,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
-            Mock<Answers> mock_answers = new Mock<Answers>();
             // It class - a Matcher of Argument types
 
             // It.Is<int>()
@@ -287,8 +291,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
-            Mock<Answers> mock_answers = new Mock<Answers>();
-
             // 'i' needs to be large enough so you get a list that CONTAINS 3 even numbers
             mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 10))).Returns(new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
             Questions questions = new Questions(mock_answers.Object);
@@ -306,8 +308,6 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
-            Mock<Answers> mock_answers = new Mock<Answers>();
-
             mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 10))).Returns(new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
             Questions questions = new Questions(mock_answers.Object);
 
