@@ -124,6 +124,24 @@ namespace MagicMoq.Tests.DAL
         }
 
         [TestMethod]
+        public void EnsureOnePlusTwoReturnsThreeV2()
+        {
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.One()).Returns(1);
+            mock_answers.Setup(a => a.Two()).Returns(2);
+            // Add code that mocks the "Three" method response
+            Questions questions = new Questions(mock_answers.Object);
+
+            // Act
+            int expected_result = 3;
+            int actual_result = questions.OnePlusTwoV2();
+
+            // Assert
+            Assert.AreEqual(expected_result, actual_result);
+        }
+
+        [TestMethod]
         public void EnsureThisReturnsTrue()
         {
             // Arrange
@@ -243,7 +261,7 @@ namespace MagicMoq.Tests.DAL
         {
             //Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 2, 4, 6 });
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6))).Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
             Questions questions = new Questions(mock_answers.Object);
 
             //Act
@@ -259,7 +277,7 @@ namespace MagicMoq.Tests.DAL
         {
             //Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 3, 5 });
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6))).Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
             Questions questions = new Questions(mock_answers.Object);
 
             //Act

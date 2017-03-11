@@ -29,12 +29,43 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
-            return Wand.ListOfNInts(3);
+            List<int> numbers = Wand.ListOfNInts(6); //Pre-sorted
+            // Use numbers.Sort() if ListofNInts doesn't return sorted items
+            List<int> result = new List<int>();
+
+            foreach(var number in numbers)
+            {
+                if (number % 2 == 0)
+                {
+                    result.Add(number);
+                }
+
+                if (result.Count == 3)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         public List<int> FirstThreeOddInts()
         {
-            return Wand.ListOfNInts(3);
+            List<int> numbers = Wand.ListOfNInts(6);
+            List<int> result = new List<int>();
+
+            foreach(var number in numbers)
+            {
+                if (number %2 != 0)
+                {
+                    result.Add(number);
+                }
+                // this i called after the first If statement
+                if (result.Count == 3) // only returns the first 3 numbers, makes it restrictive
+                {
+                    break; // Exit Loop
+                }
+            }
+            return result;
         }
 
         public int FourMinusTwo()
@@ -69,6 +100,11 @@ namespace MagicMoq.DAL
         public int OnePlusTwo()
         {
             return Wand.Three();
+        }
+
+        public int OnePlusTwoV2()
+        {
+            return Wand.One() + Wand.Two();  //should use this way, will help
         }
 
         public bool ReturnFalse()
