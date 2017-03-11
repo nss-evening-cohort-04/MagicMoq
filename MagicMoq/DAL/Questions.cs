@@ -102,12 +102,43 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
-            return Wand.ListOfNInts(3);
+            List<int> numbers = Wand.ListOfNInts(10);// Pre sorted
+            // use numbers.Sort() if ListOfNInts doesn't return sorted items
+
+            List<int> result = new List<int>();
+            foreach(var number in numbers)
+            {
+                if(number%2 == 0)
+                {
+                    result.Add(number);
+                }
+                if (result.Count == 3)
+                {
+                    break;// Exit loop
+                }
+            }
+            return result;
         }
 
         public List<int> FirstThreeOddInts()
         {
-            return Wand.ListOfNInts(3);
+            List<int> numbers = Wand.ListOfNInts(10);// Pre sorted
+            // use numbers.Sort() if ListOfNInts doesn't return sorted items
+
+            List<int> result = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (number % 2 != 0)
+                {
+                    result.Add(number);
+                }
+
+                if(result.Count == 3)
+                {
+                    break;// Exit loop
+                }
+            }
+            return result;
         }
     }
 }
