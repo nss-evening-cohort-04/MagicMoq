@@ -270,19 +270,53 @@ namespace MagicMoq.Tests.DAL
         [TestMethod]
         public void EnsureZeroPlusZeroReturnsZero()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Zero()).Returns(0);
+
+            Questions questions = new Questions(mock_answers.Object);
+            // Act
+            int expected_result = 0;
+            int actual_result = questions.ZeroPlusZero();
+            // Assert
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureFourPlusZeroReturnsFour()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Zero()).Returns(0);
+            mock_answers.Setup(a => a.Four()).Returns(4);
+
+
+            Questions questions = new Questions(mock_answers.Object);
+            // Act
+            int expected_result = 4;
+            int actual_result = questions.FourPlusZero();
+            // Assert
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
         [TestMethod]
         public void EnsureTwoMinusZeroReturnsTwo()
         {
-            // Write this test
+            // Arrange
+            Mock<Answers> mock_answers = new Mock<Answers>();
+            mock_answers.Setup(a => a.Zero()).Returns(0);
+            mock_answers.Setup(a => a.Two()).Returns(2);
+
+
+            Questions questions = new Questions(mock_answers.Object);
+            // Act
+            int expected_result = 2;
+            int actual_result = questions.TwoMinusZero();
+            // Assert
+
+            Assert.AreEqual(expected_result, actual_result);
         }
 
     }
