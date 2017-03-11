@@ -37,7 +37,7 @@ namespace MagicMoq.DAL
             {
                 if (number % 2 == 0)
                 {
-                    result.Add(number);
+                    result.Add(number); 
                 }
 
                 if (result.Count == 3)
