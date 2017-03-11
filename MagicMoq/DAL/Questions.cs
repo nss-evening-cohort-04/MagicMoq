@@ -129,6 +129,11 @@ namespace MagicMoq.DAL
                 {
                     result.Add(number);
                 }
+
+                if (result.Count == 3)
+                {
+                    break;
+                }
             }
             return result;
         }
