@@ -160,8 +160,9 @@ namespace MagicMoq.Tests.DAL
         {
             // Arrange
             Mock<Answers> mock_answers = new Mock<Answers>();
-            
             // Add code that mocks the "EmptyString" method response
+            mock_answers.Setup(a => a.EmptyString()).Returns("");
+
             Questions questions = new Questions(mock_answers.Object);
 
             // Act

@@ -72,7 +72,7 @@ namespace MagicMoq.DAL
 
         public string SayNothing()
         {
-            throw new NotImplementedException();
+            return Wand.EmptyString();
         }
 
         public bool ReturnFalse()
