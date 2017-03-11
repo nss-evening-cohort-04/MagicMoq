@@ -254,7 +254,8 @@ namespace MagicMoq.Tests.DAL
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 2, 4, 6 });
+            // mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 2, 4, 6 }); NOT A GOOD WAY TO WRITE A TEST.
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6))).Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
 
             Questions questions = new Questions(mock_answers.Object);
 
@@ -270,7 +271,8 @@ namespace MagicMoq.Tests.DAL
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 3, 5 });
+            //mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>())).Returns(new List<int> { 1, 3, 5 });
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6))).Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
 
             Questions questions = new Questions(mock_answers.Object);
 
