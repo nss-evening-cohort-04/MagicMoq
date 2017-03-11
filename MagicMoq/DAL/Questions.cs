@@ -118,7 +118,16 @@ namespace MagicMoq.DAL
         public List<int> FirstThreeEvenInts()
         {
             //throw new NotImplementedException();
-            return Wand.ListOfNInts(3);
+            List<int> numbers =  Wand.ListOfNInts(6);
+            List<int> result = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (number % 2 == 0)
+                {
+                    result.Add(number);
+                }
+            }
+            return result;
         }
 
         public List<int> FirstThreeOddInts()
