@@ -98,6 +98,24 @@ namespace MagicMoq.DAL
 
         public List<int> FirstThreeEvenInts()
         {
+            List<int> numbers = Wand.ListOfNInts(6); // List is pre sorted
+            // Use numbers.Sort() if ListofNInts doesn't return sorted items
+            List<int> result = new List<int>();
+            foreach (int number in numbers)
+            {
+                if(number % 2 == 0)
+                {
+                    result.Add(number);
+                }
+                if (result.Count == 3)
+                {
+                    break; // Exit loop
+                }
+            }
+            return result;
+
+            // If it is not a pre sorted collection
+            /*
             int[] temp = Wand.ListOfNInts(6).ToArray();
             List<int> result = new List<int>();
             for (int i = 0, count = 0; count < 3; i++)
@@ -109,10 +127,27 @@ namespace MagicMoq.DAL
                 }
             }
             return result;
+            */
         }
 
         public List<int> FirstThreeOddInts()
         {
+            List<int> numbers = Wand.ListOfNInts(6); // List is pre sorted
+            // Use numbers.Sort() if ListofNInts doesn't return sorted items
+            List<int> result = new List<int>();
+            foreach (int number in numbers)
+            {
+                if (number % 2 != 0)
+                {
+                    result.Add(number);
+                }
+                if (result.Count == 3)
+                {
+                    break; // Exit loop
+                }
+            }
+            return result;
+            /*
             int[] temp = Wand.ListOfNInts(6).ToArray();
             List<int> result = new List<int>();
             for (int i = 0, count = 0; count < 3; i++)
@@ -124,6 +159,7 @@ namespace MagicMoq.DAL
                 }
             }
             return result;
+            */
         }
     }
 }

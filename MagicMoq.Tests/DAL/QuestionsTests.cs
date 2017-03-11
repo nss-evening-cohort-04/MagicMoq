@@ -208,6 +208,13 @@ namespace MagicMoq.Tests.DAL
         public void EnsureCountToFiveReturnsListOfFiveInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
+            // It class - a Matcher of Argument types
+
+            // It.Is<int>()
+
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i==5)))
+                .Returns(new List<int>{ 1, 2, 3, 4, 5});
+            // Least Restrictive
             mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>()))
                 .Returns(new List<int>{ 1, 2, 3, 4, 5});
             Questions questions = new Questions(mock_answers.Object);
@@ -221,7 +228,7 @@ namespace MagicMoq.Tests.DAL
         public void EnsureFirstThreeEvenIntsReturnsListOfThreeEvenInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>()))
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6)))
                 .Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
             Questions questions = new Questions(mock_answers.Object);
             List<int> expected = new List<int> { 2, 4, 6 };
@@ -233,7 +240,7 @@ namespace MagicMoq.Tests.DAL
         public void EnsureFirstThreeOddIntsReturnsListOfThreeOddInts()
         {
             Mock<Answers> mock_answers = new Mock<Answers>();
-            mock_answers.Setup(a => a.ListOfNInts(It.IsAny<int>()))
+            mock_answers.Setup(a => a.ListOfNInts(It.Is<int>(i => i == 6)))
                 .Returns(new List<int> { 1, 2, 3, 4, 5, 6 });
             Questions questions = new Questions(mock_answers.Object);
             List<int> expected = new List<int> { 1, 3, 5 };
