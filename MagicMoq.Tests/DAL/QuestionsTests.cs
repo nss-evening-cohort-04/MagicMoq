@@ -20,6 +20,11 @@ namespace MagicMoq.Tests.DAL
             questions = new Questions(mock_answers.Object);
         }
 
+        private void MyHelperMethod()
+        {
+            // Do some stuff, but it is not a test, but you can use it in your test.
+        }
+
         [TestCleanup]
         public void Cleanup() 
         {
